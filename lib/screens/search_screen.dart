@@ -9,6 +9,19 @@ class SearchScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Search City'),
       ),
+      body: const Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: TextField(
+            decoration: InputDecoration(
+              labelText: 'Search',
+              hintText: 'Enter a city name',
+              suffixIcon: Icon(Icons.search_rounded),
+              border: OutlineInputBorder(),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
