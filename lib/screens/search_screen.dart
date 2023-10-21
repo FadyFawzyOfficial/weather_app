@@ -15,8 +15,11 @@ class SearchScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: TextField(
-            onSubmitted: (value) async =>
-                await WeatherService().getWeather(cityName: value),
+            onSubmitted: (value) async {
+              final weather =
+                  await WeatherService().getWeather(cityName: value);
+              Navigator.pop(context, weather);
+            },
             decoration: const InputDecoration(
               labelText: 'Search',
               hintText: 'Enter a city name',
