@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../services/weather_service.dart';
+
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
 
@@ -9,11 +11,16 @@ class SearchScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Search City'),
       ),
-      body: const Center(
+      body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: TextField(
-            decoration: InputDecoration(
+            onSubmitted: (value) async {
+              final weather =
+                  await WeatherService().getWeather(cityName: value);
+              Navigator.pop(context, weather);
+            },
+            decoration: const InputDecoration(
               labelText: 'Search',
               hintText: 'Enter a city name',
               suffixIcon: Icon(Icons.search_rounded),
