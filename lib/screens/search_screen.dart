@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../services/weather_service.dart';
+import '../cubits/weather/weather_cubit.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -16,9 +17,9 @@ class SearchScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: TextField(
             onSubmitted: (value) async {
-              final weather =
-                  await WeatherService().getWeather(cityName: value);
-              Navigator.pop(context, weather);
+              BlocProvider.of<WeatherCubit>(context)
+                  .getWeather(cityName: value);
+              Navigator.pop(context);
             },
             decoration: const InputDecoration(
               labelText: 'Search',
