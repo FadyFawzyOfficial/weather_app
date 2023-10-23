@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../cubits/weather/weather_cubit.dart';
+import '../cubits/weather/weather_state.dart';
 import '../models/weather.dart';
 import '../widgets/no_weather_body.dart';
 import '../widgets/weather_body.dart';
@@ -33,7 +36,17 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: weather == null ? const NoWeatherBody() : const WeatherBody(),
+      body: BlocBuilder<WeatherCubit, WeatherState>(
+        builder: (context, state) {
+          if (state is WeatherInitialState) {
+            return const NoWeatherBody();
+          } else if (state is WeatherLoadedState) {
+            return const WeatherBody();
+          } else {
+            return const Text('There was an error!');
+          }
+        },
+      ),
     );
   }
 }
