@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
           if (state is WeatherInitialState) {
             return const NoWeatherBody();
           } else if (state is WeatherLoadedState) {
-            return const WeatherBody();
+            return WeatherBody(weather: state.weather);
           } else {
             return const Text('There was an error!');
           }
