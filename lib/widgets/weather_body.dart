@@ -14,47 +14,47 @@ class WeatherBody extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            'Alexandria',
-            style: TextStyle(
+          Text(
+            weather.cityName,
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 32,
             ),
           ),
-          const Text(
-            'updated at 23:46',
-            style: TextStyle(fontSize: 24),
+          Text(
+            'updated at ${weather.date.hour}:${weather.date.minute}',
+            style: const TextStyle(fontSize: 24),
           ),
           const SizedBox(height: 32),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset('assets/images/cloudy.png'),
-              const Text(
-                '17',
-                style: TextStyle(
+              Image.network('https:${weather.image}'),
+              Text(
+                '${weather.temperature.round()}',
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 32,
                 ),
               ),
-              const Column(
+              Column(
                 children: [
                   Text(
-                    'Max temp: 24',
-                    style: TextStyle(fontSize: 16),
+                    'Max temp: ${weather.maxTemperature.round()}',
+                    style: const TextStyle(fontSize: 16),
                   ),
                   Text(
-                    'Min temp: 16',
-                    style: TextStyle(fontSize: 16),
+                    'Min temp: ${weather.minTemperature.round()}',
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ],
               ),
             ],
           ),
           const SizedBox(height: 32),
-          const Text(
-            'Light Rain',
-            style: TextStyle(
+          Text(
+            weather.condition,
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 32,
             ),
