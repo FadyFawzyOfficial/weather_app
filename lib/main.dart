@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'cubits/weather/weather_cubit.dart';
 import 'screens/home_screen.dart';
+import 'utilities/theme_color.dart';
 
 void main() => runApp(const App());
 
@@ -28,24 +29,5 @@ class App extends StatelessWidget {
         },
       ),
     );
-  }
-
-  MaterialColor getThemeColor({required String condition}) {
-    if (condition.isEmpty) return Colors.blue;
-
-    switch (condition) {
-      case 'Sunny':
-      case 'Clear':
-        return Colors.amber;
-      case 'Partly Cloud':
-      case 'Cloud':
-      case 'Overcast':
-      case 'Mist':
-      case 'Fog':
-      case 'Freezing fog':
-        return Colors.blueGrey;
-      default:
-        return Colors.blue;
-    }
   }
 }
