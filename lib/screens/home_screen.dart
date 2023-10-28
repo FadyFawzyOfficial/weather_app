@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../cubits/weather/weather_cubit.dart';
-import '../cubits/weather/weather_state.dart';
 import '../models/weather.dart';
 import '../widgets/no_weather_body.dart';
 import '../widgets/weather_body.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/weather.dart';
+import '../utilities/theme_color.dart';
 
 class WeatherBody extends StatelessWidget {
   final Weather weather;
@@ -9,8 +10,16 @@ class WeatherBody extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return Padding(
+    final themeColor = getThemeColor(condition: weather.condition);
+    return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [themeColor[500]!, themeColor[300]!, themeColor[100]!],
+        ),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
