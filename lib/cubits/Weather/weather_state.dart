@@ -1,4 +1,4 @@
-import '../../models/weather.dart';
+part of 'weather_cubit.dart';
 
 class WeatherState {}
 
