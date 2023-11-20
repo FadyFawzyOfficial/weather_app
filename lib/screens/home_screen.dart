@@ -39,6 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context, state) {
           if (state is WeatherInitialState) {
             return const NoWeatherBody();
+          } else if (state is WeatherLoadingState) {
+            return const Center(child: CircularProgressIndicator.adaptive());
           } else if (state is WeatherLoadedState) {
             return WeatherBody(weather: state.weather);
           } else {
